@@ -10,7 +10,7 @@ body,
 }
 
 .mobile{
-  @apply bg-red-300 hidden
+  @apply hidden
 }
 
 .mobile_r_gap{

@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
 import { SiAddthis } from 'react-icons/si'
 import { BsThreeDotsVertical } from 'react-icons/bs'
@@ -6,8 +8,32 @@ import { BsDot } from 'react-icons/bs'
 import { AiFillClockCircle } from 'react-icons/ai'
 import users from './constants'
 import Card from './Card'
+import { data } from '@/data/boardData'
 
 const Board = () => {
+    
+    const [ todo, setTodo ] = useState({});
+    const [ inProgress, setInProgress ] = useState({});
+    const [ done, setDone ] = useState({});
+    const [ revised, setRevised ] = useState({});
+    
+    useEffect(() => {
+        setTodo(() => {
+            return data.find(ele => ele.name == 'To-do-List')
+        })
+        setInProgress(() => {
+            return data.find(ele => ele.name == 'In Progress')
+        })
+        setDone(() => {
+            return data.find(ele => ele.name == 'Done')
+        })
+        setRevised(() => {
+            return data.find(ele => ele.name == 'Revised')
+        })
+    }, [])
+
+    console.table(todo.items)
+    
     return (
         <div className="h-fit m-4 flex flex-grow">
             {/* Board header */}
@@ -19,41 +45,66 @@ const Board = () => {
             <div className='grid grid-cols-4 gap-5 overflow-x-auto overflow-y-hidden'>
                 <div className='bg-primary-purple p-3'>
                     <h4 className='flex justify-between items-center font-bold text-white'>
-                        To-do-List(24)
+                        To-do-List({todo.items?.length})
                         <SiAddthis width={23} height={23} color='#6418C3' />
                     </h4>
                     {/* card */}
-                    <Card />
-                    <Card />
-                    <Card />
+                    {
+                        todo.items?.map((ele) =>(
+                            <Card 
+                                key={ele.id}
+                                data = {ele}
+                            />
+                        ))
+                    }
                 </div>
 
                 <div className='bg-primary-purple p-3'>
                     <h4 className='flex justify-between items-center font-bold text-white'>
-                        In Progress (2)
+                        In Progress ({inProgress.items?.length})
                         <SiAddthis width={23} height={23} color='#211A75' />
                     </h4>
                     {/* card */}
-                    <Card />
-                    <Card />
+                    {
+                        inProgress.items?.map((ele) =>(
+                            <Card 
+                                key={ele.id}
+                                data = {ele}
+                            />
+                        ))
+                    }
                 </div>
 
                 <div className='bg-primary-purple p-3'>
                     <h4 className='flex justify-between items-center font-bold text-white'>
-                        Done (3)
+                        Done ({done.items?.length})
                         <SiAddthis width={23} height={23} color='#211A75' />
                     </h4>
                     {/* card */}
-                    <Card />
+                    {
+                        done.items?.map((ele) =>(
+                            <Card 
+                                key={ele.id}
+                                data = {ele}
+                            />
+                        ))
+                    }
                 </div>
 
                 <div className='bg-primary-purple p-3'>
                     <h4 className='flex justify-between items-center font-bold text-white'>
-                        Revised (0)
+                        Revised ({revised.items?.length})
                         <SiAddthis width={23} height={23} color='#211A75' />
                     </h4>
                     {/* card */}
-                    <Card />
+                    {
+                        revised.items?.map((ele) =>(
+                            <Card 
+                                key={ele.id}
+                                data = {ele}
+                            />
+                        ))
+                    }
                 </div>
             </div>
         </div>
