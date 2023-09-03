@@ -13,15 +13,15 @@ import users from './constants'
 const Title = ({ children, className }) => {
     const [ progress, setProgress ] = React.useState(60);
     return (
-        <div className="w-[95%] bg-primary-purple h-[9.5rem] flex flex-col m-4 rounded-lg">
-            <div className='flex justify-between p-4'>
+        <div className="w-[95%] bg-primary-purple  flex flex-col m-4 rounded-lg">
+            <div className='flex justify-between p-4 pt-4'>
                 <div className='flex gap-x-3'>
                     <FaCircleArrowLeft size={28} color='gray' />
                     <div>
                         <h2 className=' text-white font-bold'>School November Tasks</h2>
                         <p className='text-[9px] text-gray-600'>Created by Instructor Day on November 31, 2022</p>
                     </div>
-                </div>
+                </div>  
 
                 <div className='flex items-center gap-x-2'>
                     <div>
@@ -41,8 +41,17 @@ const Title = ({ children, className }) => {
                 </div>
             </div>
 
-            <div className='flex justify-between items-center pl-4 mt-4'>
-                <div className='flex items-center gap-x-3 h-[3rem]'>
+            <div className='
+            flex 
+            sm:flex-row 
+            sm:justify-between 
+            sm:items-center
+            pl-4 mt-4 pb-4 
+            xsm:flex-col 
+            xsm:justify-center 
+            xsm:items-center 
+            '>
+                <div className='flex items-center gap-x-3 h-[3rem]  w-[200px]'>
                     <div className='flex items-center relative '>
                     {
                         users.map(user => (
@@ -87,30 +96,14 @@ const Title = ({ children, className }) => {
                     </div>
                 </div>
 
-{/* % age with pie */}
-                <div className='
-                hidden
-                md:flex  
-                lg:hidden
-                gap-x-3  
-                w-[34px]
-                h-[34px]
-                bg-[#C4C4C4]
-                rounded-full border
-                border-black
-                mr-4'>
-                </div>
-
-                <div className='flex gap-x-2 items-center flex-wrap 
-                md:hidden  
-                lg:flex'>
-                    <span className='text-white text-sm flex flex-wrap md:hidden lg:flex'>
+{/*  progress bar with text */}
+                <div className='flex gap-x-2 items-center flex-wrap
+                lg:flex xsm:flex-col'>
+                    <span className='text-white text-sm flex flex-wrap'>
                     Total Progress {progress}%
                     </span>
                     <div className={`
                     flex
-                    md:hidden  
-                    lg:flex
                     gap-x-3  
                     w-[200px]
                     p-1.5

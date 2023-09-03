@@ -1,5 +1,6 @@
 'use client'
 
+import React, { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { useMemo } from 'react'
 import Box from './Box'
@@ -84,12 +85,30 @@ const Sidebar = ({ children }) => {
         }
 
     ], [pathname])
+
+    const [ mobile, setMobile ] = React.useState(false)
+
+    useEffect(() => {
+        function handleResize() {
+            if(window.innerWidth <= 820){
+                setMobile(true)
+            }else{
+                setMobile(false)
+            }
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
+
     return (
         <div className='flex h-full '>
             <div
                 className='
-            hidden
-            md:flex
+            flex
             flex-col
             gap-y-2
             bg-primary-purple
@@ -98,19 +117,20 @@ const Sidebar = ({ children }) => {
             p-2
         '
             >
-                <Box className='overflow-y-auto h-full scrollbar-none '>
-                    <div className='flex justify-center gap-x-8 items-center py-4'>
-                        <span className='lg:text-[24px] md:text-[18px] text-white'>weframetech</span> <GiHamburgerMenu size={28} color='#7879F1' />
+                <Box className='overflow-y-auto h-full scrollbar-none'>
+                    <div className={`flex justify-center gap-x-8 items-center py-4 ${mobile&&'mobile_r_gap'}`} onClick={() => setMobile(prevState => !prevState)}>
+                        <span className={`lg:text-[24px] md:text-[18px] text-white ${mobile&&'mobile'}`}>weframetech</span> <GiHamburgerMenu size={28} color='#7879F1' />
                     </div>
 
                     <h3
-                        className='
+                        className={`
               text-[#C7C7C7]
                 text-sm
                 font-medium
                 px-5
                 py-4
-                '>MAIN MENU</h3>
+                ${mobile&&'mobile'}
+                `}>MAIN MENU</h3>
                     <div
                         className='
                   flex
@@ -125,18 +145,20 @@ const Sidebar = ({ children }) => {
                                 <SidebarItem
                                     key={item.label}
                                     {...item}
+                                    mobile={mobile}
                                 />
                             ))
                         }
                     </div>
 
                     <div 
-                    className='
+                    className={`
                     md:w-32 md:h-32 lg:w-48 lg:h-40 p-6
                     bg-gradient-to-r from-cyan-500 to-blue-500 
                     m-7 rounded-lg 
                     relative
-                    '>
+                    ${mobile&&'mobile'}
+                    `}>
                         <div className='flex flex-col justify-start items-center'>
                             <div className='w-full pb-2'>
                                 <Image
@@ -169,3 +191,6 @@ const Sidebar = ({ children }) => {
 }
 
 export default Sidebar
+
+// let mobileWidth = 'mobile_r_gap'
+// let mobile = 'mobile'

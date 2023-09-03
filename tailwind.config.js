@@ -26,12 +26,12 @@ module.exports = {
       }
     },
     screens: {
-      'xsm': '320px',
+      'xsm': '300px',
       // => @media (min-width: 640px) { ... }
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '768px',
+      'md': '821px',
       // => @media (min-width: 768px) { ... }
 
       'lg': '1024px',

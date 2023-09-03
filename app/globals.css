@@ -9,3 +9,11 @@ body,
   background: var(--Dark01, #0D0B21);
   scrollbar-width: none;
 }
+
+.mobile{
+  @apply bg-red-300 hidden
+}
+
+.mobile_r_gap{
+  @apply w-fit mx-4
+}

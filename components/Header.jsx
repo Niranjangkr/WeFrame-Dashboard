@@ -29,10 +29,11 @@ const Header = ({children, className}) => {
     justify-between
     '>
         <div className='
-        hidden
-        md:flex
+        w-full
+        flex
         gap-x-2
         items-center
+        justify-between
         '>
             <div className='
             flex
@@ -53,6 +54,16 @@ const Header = ({children, className}) => {
                 bg-transparent
                 ' />
             </div>
+
+            <div className='
+            flex
+            lg:gap-x-7
+            xl:gap-x-9
+            items-center
+            md:ml-4
+            lg:ml-7
+            xl:ml-10
+            '>
             <span className='
              text-[#6418C3]
              text-[10px]
@@ -64,23 +75,22 @@ const Header = ({children, className}) => {
                 OTHER MENUS
             </span>
             <div className='
-            flex
-            md:gap-x-4
-            lg:gap-x-7
-            xl:gap-x-9
-            items-center
-            md:ml-4
-            lg:ml-7
-            xl:ml-10
+             md:flex
+             hidden
+             md:gap-x-4
+             lg:gap-x-7
+             xl:gap-x-9
+             md:ml-4
+             lg:ml-7
+             xl:ml-10
             '>
                 <Link href={'/notification'}><FaBell color='#6418C3' size={22}/></Link>
                 <Link href={'/mycourse'}><BsPersonVcardFill color='#6418C3' size={22}/></Link>
                 <Link href={'/checked-task'}><RiCheckboxMultipleFill color='#6418C3' size={22}/></Link>
-               <Link href={'/work'}><FaSuitcase color='#6418C3' size={22}/></Link>
+                <Link href={'/work'}><FaSuitcase color='#6418C3' size={22}/></Link>
             </div>
-
-            <div className='flex items-center w-1/6  h-fit rounded-full
-            bg-[#211A75] gap-x-1 p-2 md:mx-4 lg:mx-6
+            <div className='flex items-center w-fit  h-fit rounded-full
+            bg-[#211A75] gap-x-1 p-2 md:mx-4 lg:mx-6 ml-3 mr-3
             '>
                 <Image
                 src={langSelected ==='English'?'/assets/images/us.svg':'/assets/images/India.png'}
@@ -92,6 +102,7 @@ const Header = ({children, className}) => {
                     <option value={'English'}>English</option>
                     <option value={'Hindi'}>Hindi</option>
                 </select>
+            </div>
             </div>
 
             <div className='flex items-center gap-x-4'>

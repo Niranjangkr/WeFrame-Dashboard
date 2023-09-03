@@ -9,14 +9,14 @@ import Card from './Card'
 
 const Board = () => {
     return (
-        <div className="h-full m-4 flex flex-grow">
+        <div className="h-fit m-4 flex flex-grow">
             {/* Board header */}
             <div className='flex justify-between'>
 
             </div>
 
             {/* Board columns */}
-            <div className='grid grid-cols-4 gap-5'>
+            <div className='grid grid-cols-4 gap-5 overflow-x-auto overflow-y-hidden'>
                 <div className='bg-primary-purple p-3'>
                     <h4 className='flex justify-between items-center font-bold text-white'>
                         To-do-List(24)

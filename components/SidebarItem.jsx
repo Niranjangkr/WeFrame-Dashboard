@@ -6,7 +6,8 @@ const SidebarItem = ({
     icon,
     label,
     active, 
-    href
+    href,
+    mobile
 }) => {
   return (
     <Link 
@@ -23,13 +24,17 @@ const SidebarItem = ({
             cursor-pointer
             ${label === 'Dashboard' || label === 'Email' ? 'text-[#464366]' : 'text-[#7879F1]'}
             py-1
+
         `,
         )}
     >
     {icon}
-    <p>{label}</p>
+    <p className={`${mobile&&'mobile'}`}>{label}</p>
     </Link>
   )
 }
 
 export default SidebarItem
+
+// let mobileWidth = 'mobile_r_gap'
+// let mobile = 'mobile'
