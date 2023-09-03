@@ -99,6 +99,32 @@ export const data = [
                     "https://randomuser.me/api/portraits/men/27.jpg",
                 ],
                 "days":"2"
+            },
+            {
+                "id":4,
+                "priority": 2,
+                "title": "Instructor Meeting",
+                "description": "Review/correct yellow belt techniques.",
+                "assignees": [
+                    "https://randomuser.me/api/portraits/men/21.jpg",     
+                    "https://randomuser.me/api/portraits/men/22.jpg",
+                    "https://randomuser.me/api/portraits/men/28.jpg",
+                    "https://randomuser.me/api/portraits/men/27.jpg",
+                ],
+                "days":"2"
+            },
+            {
+                "id":5,
+                "priority": 2,
+                "title": "Instructor Meeting",
+                "description": "Review/correct yellow belt techniques.",
+                "assignees": [
+                    "https://randomuser.me/api/portraits/men/21.jpg",     
+                    "https://randomuser.me/api/portraits/men/22.jpg",
+                    "https://randomuser.me/api/portraits/men/28.jpg",
+                    "https://randomuser.me/api/portraits/men/27.jpg",
+                ],
+                "days":"2"
             }
         ]
     },

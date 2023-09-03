@@ -33,79 +33,33 @@ const Board = () => {
     }, [])
 
     console.table(todo.items)
-    
     return (
         <div className="h-fit m-4 flex flex-grow">
-            {/* Board header */}
-            <div className='flex justify-between'>
-
-            </div>
-
-            {/* Board columns */}
-            <div className='grid grid-cols-4 gap-5 overflow-x-auto overflow-y-hidden'>
-                <div className='bg-primary-purple p-3'>
-                    <h4 className='flex justify-between items-center font-bold text-white'>
-                        To-do-List({todo.items?.length})
-                        <SiAddthis width={23} height={23} color='#6418C3' />
-                    </h4>
-                    {/* card */}
-                    {
-                        todo.items?.map((ele) =>(
-                            <Card 
-                                key={ele.id}
-                                data = {ele}
-                            />
-                        ))
-                    }
-                </div>
-
-                <div className='bg-primary-purple p-3'>
-                    <h4 className='flex justify-between items-center font-bold text-white'>
-                        In Progress ({inProgress.items?.length})
-                        <SiAddthis width={23} height={23} color='#211A75' />
-                    </h4>
-                    {/* card */}
-                    {
-                        inProgress.items?.map((ele) =>(
-                            <Card 
-                                key={ele.id}
-                                data = {ele}
-                            />
-                        ))
-                    }
-                </div>
-
-                <div className='bg-primary-purple p-3'>
-                    <h4 className='flex justify-between items-center font-bold text-white'>
-                        Done ({done.items?.length})
-                        <SiAddthis width={23} height={23} color='#211A75' />
-                    </h4>
-                    {/* card */}
-                    {
-                        done.items?.map((ele) =>(
-                            <Card 
-                                key={ele.id}
-                                data = {ele}
-                            />
-                        ))
-                    }
-                </div>
-
-                <div className='bg-primary-purple p-3'>
-                    <h4 className='flex justify-between items-center font-bold text-white'>
-                        Revised ({revised.items?.length})
-                        <SiAddthis width={23} height={23} color='#211A75' />
-                    </h4>
-                    {/* card */}
-                    {
-                        revised.items?.map((ele) =>(
-                            <Card 
-                                key={ele.id}
-                                data = {ele}
-                            />
-                        ))
-                    }
-                </div>
+            {/* Board columns */} 
+            <div className='grid grid-cols-4 space-x-4 overflow-x-auto'>
+                {
+                    data.map((data, index) => {
+                        return (
+                            <div className='flex flex-col bg-primary-purple'>
+                            <div className='font-bold text-white flex justify-center gap-x-3 w-full sticky top-0 h-[6vh] p-2 mb-5'>
+                                    <h2 className='flex gap-x-2 items-center'>{data.name} ({data.items.length}) <SiAddthis width={23} height={23} color='#6418C3' /></h2>
+                                </div>
+                            <div key={index} className='bg-primary-purple p-3 h-[94vh] rounded-lg overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-800 scrollbar-track-black'>
+                                {
+                                    data.items.map((item, index) => {
+                                        return (
+                                            <Card 
+                                                key={index}
+                                                data={item}
+                                            />
+                                        )
+                                    })
+                                }
+                            </div>
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>
     )

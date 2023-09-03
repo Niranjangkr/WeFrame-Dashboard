@@ -8,7 +8,6 @@ const Home = () => {
     h-full
     w-full 
     overflow-hidden
-    overflow-y-auto
     '>  
        <Header />
        <Title />
